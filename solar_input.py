@@ -53,8 +53,14 @@ def parse_star_parameters(line, star):
     list_of_star_characteristics = a = line.split()
     print(a)
 
-    star.R, star.color, star.m, star.x, star.y, star.Vx, star.Vy = (
-        a[1], a[2], a[3], a[4], a[5], a[6], a[7])
+    (star.R, star.color, star.m,
+     star.x, star.y,
+     star.Vx, star.Vy) = (
+
+        float(a[1]), a[2], float(a[3]),
+        float(a[4]), float(a[5]),
+        float(a[6]), float(a[7])
+    )
 
 
 
@@ -82,8 +88,14 @@ def parse_planet_parameters(line, planet):
     list_of_planet_characteristics = a = line.split()
     print(a)
 
-    planet.R, planet.color, planet.m, planet.x, planet.y, planet.Vx, planet.Vy = (
-        a[1], a[2], a[3], a[4], a[5], a[6], a[7])
+    (planet.R, planet.color, planet.m,
+     planet.x, planet.y,
+     planet.Vx, planet.Vy) = (
+
+        float(a[1]), a[2], float(a[3]),
+        float(a[4]), float(a[5]),
+        float(a[6]), float(a[7])
+    )
 
 
     pass  # FIXME: not done yet...
