@@ -19,10 +19,14 @@ def read_space_objects_data_from_file(input_filename):
             if len(line.strip()) == 0 or line[0] == '#':
                 continue  # пустые строки и строки-комментарии пропускаем
             object_type = line.split()[0].lower()
-            if object_type == "star":  # FIXME: do the same for planet
+            if object_type == "star":
                 star = Star()
                 parse_star_parameters(line, star)
                 objects.append(star)
+            elif object_type == "planet":
+                planet = Planet()
+                parse_planet_parameters(line, planet)
+                objects.append(planet)
             else:
                 print("Unknown space object")
 
@@ -44,6 +48,16 @@ def parse_star_parameters(line, star):
     **star** — объект звезды.
     """
 
+    print('starr', line)
+
+    list_of_star_characteristics = a = line.split()
+    print(a)
+
+    star.R, star.color, star.m, star.x, star.y, star.Vx, star.Vy = (
+        a[1], a[2], a[3], a[4], a[5], a[6], a[7])
+
+
+
     pass  # FIXME: not done yet
 
 def parse_planet_parameters(line, planet):
@@ -61,6 +75,17 @@ def parse_planet_parameters(line, planet):
     **line** — строка с описание планеты.
     **planet** — объект планеты.
     """
+
+    print('plllanet', line)
+
+
+    list_of_planet_characteristics = a = line.split()
+    print(a)
+
+    planet.R, planet.color, planet.m, planet.x, planet.y, planet.Vx, planet.Vy = (
+        a[1], a[2], a[3], a[4], a[5], a[6], a[7])
+
+
     pass  # FIXME: not done yet...
 
 
@@ -82,5 +107,10 @@ def write_space_objects_data_to_file(output_filename, space_objects):
 
 # FIXME: хорошо бы ещё сделать функцию, сохранающую статистику в заданный файл...
 
+
+
+
+
 if __name__ == "__main__":
+    read_space_objects_data_from_file('solar_system.txt')
     print("This module is not for direct call!")
