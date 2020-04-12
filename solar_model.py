@@ -21,12 +21,11 @@ def calculate_force(body, space_objects):
 
         x = obj.x - body.x
         y = obj.y - body.y
-        r = (x**2 + y**2)**0.5
-        _force = gravitational_constant * body.m * obj.m / r**2
+        r = (x ** 2 + y ** 2) ** 0.5
+        _force = gravitational_constant * body.m * obj.m / r ** 2
 
         body.Fx += _force * x / r
         body.Fy += _force * y / r
-
 
 
 def move_space_object(body, dt):
@@ -37,14 +36,13 @@ def move_space_object(body, dt):
     **body** — тело, которое нужно переместить.
     """
 
-    ax = body.Fx/body.m     # ускорение по x
+    ax = body.Fx / body.m  # ускорение по x
     body.Vx += ax * dt
     body.x += body.Vx * dt
 
-    ay = body.Fy/body.m     # ускорение по y
+    ay = body.Fy / body.m  # ускорение по y
     body.Vy += ay * dt
     body.y += body.Vy * dt
-
 
 
 def recalculate_space_objects_positions(space_objects, dt):
@@ -56,7 +54,7 @@ def recalculate_space_objects_positions(space_objects, dt):
     **dt** — шаг по времени
     """
 
-    dt *= 1000 # коэффициент ускорения движения планет
+    dt *= 1000  # коэффициент ускорения движения планет
 
     for body in space_objects:
         calculate_force(body, space_objects)
